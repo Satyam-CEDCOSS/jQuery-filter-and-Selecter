@@ -1,0 +1,42 @@
+/* main container  */
+.container h1{
+    text-align: center;
+}
+
+/* header  */
+
+/* header select  */
+.header__select{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* header table  */
+.header__table{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+table{
+    width: 90%;
+}
+
+
+/* footer  */
+.footer__search{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.footer__table{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px;
+}

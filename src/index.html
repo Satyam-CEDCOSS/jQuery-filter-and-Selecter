@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Filter and Selecter</title>
+</head>
+<body>
+    <!-- main container  -->
+    <div class="container">
+        <h1>Filters And Selectors</h1>
+        <!-- header  -->
+        <header>
+            <div class="header__box">
+                <!-- header select  -->
+                <div class="header__select">
+                    <select name="OS" id="sort_by" onchange="sorting()">
+                        <option value="">-Select-</option>
+                        <option value="ascending">Ascending</option>
+                        <option value="decending">Descending</option>
+                    </select>
+                    <select name="OS" id="sort_for" onchange="sorting()">
+                        <option value="">-Select-</option>
+                        <option value="os">OS</option>
+                        <option value="brand">Brand</option>
+                    </select>
+                </div>
+                <!-- headre table  -->
+                <div class="header__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Operating System</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </header>
+        <!-- footer  -->
+        <footer>
+            <div class="footer__box">
+                <div class="footer__search">
+                    <select name="Brand" id="search_select">
+                        <option value="">-Select-</option>
+                        <option value="id">ID</option>
+                        <option value="name">Name</option>
+                    </select>
+                    <input type="text" id="search_panel">
+                    <button id="search" onclick="searching()">Search</button>
+                </div>
+                <div class="footer__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Operating System</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table_search"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+</body>
+<script src="./JS/products.js"></script>
+</html>
