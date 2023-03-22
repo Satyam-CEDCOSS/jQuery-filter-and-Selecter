@@ -17,15 +17,19 @@
             <div class="header__box">
                 <!-- header select  -->
                 <div class="header__select">
-                    <select name="OS" id="sort_by" onchange="sorting()">
-                        <option value="">-Select-</option>
-                        <option value="ascending">Ascending</option>
-                        <option value="decending">Descending</option>
+                    <select name="OS" id="filter_os" onchange="filtering()">
+                        <option value="">-OS-</option>
+                        <option value="IOS">IOS</option>
+                        <option value="Android">Android</option>
+                        <option value="Windows">Windows</option>
                     </select>
-                    <select name="OS" id="sort_for" onchange="sorting()">
-                        <option value="">-Select-</option>
-                        <option value="os">OS</option>
-                        <option value="brand">Brand</option>
+                    <select name="Brand" id="filter_brand" onchange="filtering()">
+                        <option value="">-Brand-</option>
+                        <option value="Asus">Asus</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Motorola">Motorola</option>
+                        <option value="Microsoft">Microsoft</option>
                     </select>
                 </div>
                 <!-- headre table  -->
@@ -49,13 +53,8 @@
         <footer>
             <div class="footer__box">
                 <div class="footer__search">
-                    <select name="Brand" id="search_select">
-                        <option value="">-Select-</option>
-                        <option value="id">ID</option>
-                        <option value="name">Name</option>
-                    </select>
-                    <input type="text" id="search_panel">
-                    <button id="search" onclick="searching()">Search</button>
+                    <span>Search:</span>
+                    <input type="text" id="search_panel" onkeyup="searching()">
                 </div>
                 <div class="footer__table">
                     <table>

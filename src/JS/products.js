@@ -1,3 +1,5 @@
+// Given Data 
+
 var data = [
   {
     id: "100",
@@ -37,73 +39,83 @@ var data = [
   },
 ];
 
-function display(){
-	let cnt=0
-	let txt=""
-	data.forEach(element => {
-		txt+=`<tr><td>${element.id}</td>
+// Display Function 
+let cnt = 0;
+function display() {
+  cnt = 0;
+  let txt = "";
+  data.forEach((element) => {
+    txt += `<tr><td>${element.id}</td>
 		<td>${element.name}</td>
 		<td>${element.brand}</td>
 		<td>${element.os}</td>
-		<td><button id="search" onclick="delete_row(${cnt++})">X</button></td></tr>`
-	});
-	$("#table_body").html(txt)
+		<td><button id="search" onclick="delete_row(${cnt++})">X</button></td></tr>`;
+  });
+  $("#table_body").html(txt);
 }
-display()
+display();
 
+// Delete Function 
 function delete_row(val) {
-	data.splice(val,1)
-	display()
+  data.splice(val, 1);
+  display();
 }
 
-function sorting(){
-	let sortby = $("#sort_by").val()
-	let sortfor = $("#sort_for").val()
-	if (sortby == "ascending") {
-		data = data.sort((a, b) => {
-		  let fa = a[sortfor]
-			fb = b[sortfor];
-  
-		  if (fa < fb) {
-			return -1;
-		  }
-		  if (fa > fb) {
-			return 1;
-		  }
-		  return 0;
-		});
-	}
-	else if (sortby== "decending"){
-		data = data.sort((a, b) => {
-			let fa = a[sortfor].toLowerCase(),
-			  fb = b[sortfor].toLowerCase();
-	
-			if (fa > fb) {
-			  return -1;
-			}
-			if (fa < fb) {
-			  return 1;
-			}
-			return 0;
-		  });
-	}
-	display()
-}
-
-function searching(){
-	let word = ""
-	let search_choose = $("#search_select").val();
-	let search_input = $("#search_panel").val();
-	data.forEach(element => {
-		if(element[search_choose]==search_input){
-			word+=`<tr><td>${element.id}</td>
+// Filter Function 
+function filtering() {
+  debugger;
+  word = "";
+  cnt = 0;
+  let f_os = $("#filter_os").val();
+  let f_brand = $("#filter_brand").val();
+  console.log(f_os, f_brand);
+  data.forEach((element) => {
+    if (f_os && f_brand) {
+      if (element.os == f_os && element.brand == f_brand) {
+        word += `<tr><td>${element.id}</td>
+				<td>${element.name}</td>
+				<td>${element.brand}</td>
+				<td>${element.os}</td>
+				<td><button id="search" disabled>X</button></td></tr>`;
+      }
+    } else if (f_os) {
+      if (element.os == f_os) {
+        word += `<tr><td>${element.id}</td>
+				<td>${element.name}</td>
+				<td>${element.brand}</td>
+				<td>${element.os}</td>
+				<td><button id="search" disabled>X</button></td></tr>`;
+      }
+    } else if (f_brand) {
+      if (element.brand == f_brand) {
+        word += `<tr><td>${element.id}</td>
+				<td>${element.name}</td>
+				<td>${element.brand}</td>
+				<td>${element.os}</td>
+				<td><button id="search" disabled>X</button></td></tr>`;
+      }
+    } else {
+      word += `<tr><td>${element.id}</td>
 			<td>${element.name}</td>
 			<td>${element.brand}</td>
-			<td>${element.os}</td></tr>`
-		}
-	});
-	$("#table_search").html(word)
+			<td>${element.os}</td>
+			<td><button id="search" onclick="delete_row(${cnt++})">X</button></td></tr>`;
+    }
+  });
+  $("#table_body").html(word);
 }
 
-
-
+// Search Function 
+function searching() {
+  let word = "";
+  let search_input = $("#search_panel").val();
+  data.forEach((element) => {
+    if (element.id == search_input || element.name == search_input) {
+      word += `<tr><td>${element.id}</td>
+			<td>${element.name}</td>
+			<td>${element.brand}</td>
+			<td>${element.os}</td></tr>`;
+    }
+  });
+  $("#table_search").html(word);
+}
